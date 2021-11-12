@@ -28,9 +28,8 @@ jobs:
         dotnet-version: ${{ env.DOTNET_VERSION }}
 
     - name: Install dependencies
-      run: 
-        cd ".\tests\GCRealTimeMon.UnitTests"
-        dotnet restore
+      run:
+        cd ".\tests\GCRealTimeMon.UnitTests" && dotnet restore
       
     - name: Build
       run: dotnet build --configuration Release --no-restore
