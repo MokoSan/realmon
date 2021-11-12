@@ -29,7 +29,7 @@ jobs:
 
     - name: Install dependencies
       run:
-        ls && ls tests && cd "tests\GCRealTimeMon.UnitTests" && dotnet restore
+        cd "tests/GCRealTimeMon.UnitTests" && dotnet restore
       
     - name: Build
       run: dotnet build --configuration Release --no-restore
