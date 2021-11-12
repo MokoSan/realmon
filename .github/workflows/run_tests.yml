@@ -10,6 +10,7 @@ on:
 
 env:
   DOTNET_VERSION: '5.0.301' # The .NET SDK version to use
+  TEST_DIR: 'tests/GCRealTimeMon.UnitTests'
 
 jobs:
   build-and-test:
@@ -29,10 +30,10 @@ jobs:
 
     - name: Install dependencies
       run:
-        cd "tests/GCRealTimeMon.UnitTests" && dotnet restore
+        dotnet restore ${{ env.TEST_DIR }}
       
     - name: Build
-      run: dotnet build --configuration Release --no-restore
+      run: dotnet build --configuration Release --no-restore ${{ env.TEST_DIR }} 
     
     - name: Test
-      run: dotnet test --no-restore --verbosity normal
+      run: dotnet test --no-restore --verbosity normal --no-restore ${{ env.TEST_DIR}}
